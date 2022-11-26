@@ -119,19 +119,24 @@ public:
             string row;
             vector<string> prevRows;
             vector<string> newRows;
-            ifstream in(writePath);
-            if (!in)
+
+            if (!isDestructive)
             {
-                cout << "ERROR: FILE OPEN FAIL" << "\n";
-                return;
-            }
-            while (getline(in, row))
-            {
-                if(row.length() > 0)
+                ifstream in(writePath);
+                if (!in)
                 {
-                    prevRows.push_back(row);
+                    cout << "ERROR: FILE OPEN FAIL" << "\n";
+                    return;
+                }
+                while (getline(in, row))
+                {
+                    if(row.length() > 0)
+                    {
+                        prevRows.push_back(row);
+                    }
                 }
             }
+            
             ofstream myFile(writePath);
 
             for (int r = 0; r < data.size(); r++)//re-delimiting vector<vector<string>> to idevisual lines
