@@ -1,12 +1,14 @@
 #include <iostream>
 #include <vector>
+#include <map>
 #include "csvpp.hpp"
+#include "person.hpp"
 using namespace std;
 
 int main()
 {
-    csv treeRingData("BEN ALEX Tree Ring Data - ALL - Tree Ring Data ALL 2022.csv");
-    vector<string> dataTypes(30, "double");
-    treeRingData.readCSV(",", 5, dataTypes);
+    csv hightWeight("hw_25000.csv", ',', 1, 1);
+    vector<vector<string>> csv2dVec = hightWeight.readCSV();
+    
     return 0;
 }
