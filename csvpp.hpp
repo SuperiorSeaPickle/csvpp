@@ -1,3 +1,27 @@
+/*
+   ______________________________
+ / \                             \.
+|   |  WELCOME TO CSVPP!         |.
+ \_ |  -----------------         |.
+    |                            |.
+    |  The following is an ode   |.
+    |  to all the people who     |.
+    |  think python is stupid    |.
+    |                            |.
+    |                            |.
+    |  CREATED BY:               |
+    |    SuperiorSeaPickle       |.
+    |                            |.
+    |                            |.
+    |                            |.
+    |                            |.
+    |   _________________________|___
+    |  /                            /.
+    \_/____________________________/.
+
+
+*/
+
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -19,13 +43,13 @@ public:
     string CsvPath;
     char Delimeter;
     int HeaderLines;
-    int IndexCoulunm;
+    int IndexColumn;
     
-    csv( string path, int headerLines = 1, int indexCoulumn = 1, char delim = ',')  {
+    csv( string path, int headerLines = 1, int indexColumn = 1, char delim = ',')  {
         CsvPath = path;
         Delimeter = delim;
         HeaderLines = headerLines;
-        IndexCoulunm = indexCoulumn;
+        IndexColumn = indexColumn;
 
     }
     ~csv() { }
