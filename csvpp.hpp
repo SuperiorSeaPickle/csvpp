@@ -16,16 +16,16 @@ private:
     }
 
 public:
-    string csvPath;
-    char delimeter;
-    int headerLines;
-    int indexCoulunm;
+    string CsvPath;
+    char Delimeter;
+    int HeaderLines;
+    int IndexCoulunm;
     
-    csv(string path, char delim, int headLines, int indCoulunm)  {
-        csvPath = path;
-        delimeter = delim;
-        headerLines = headLines;
-        indexCoulunm = indCoulunm;
+    csv( string path, int HeaderLines = 1, int indexCoulumn = 1, char delim = ',')  {
+        CsvPath = path;
+        Delimeter = delim;
+        HeaderLines = HeaderLines;
+        IndexCoulunm = indexCoulumn;
 
     }
     ~csv() { }
@@ -35,13 +35,13 @@ public:
 
 
         //open file
-        ifstream in(csvPath);
+        ifstream in(CsvPath);
         if (!in)
         {
             cout << "ERROR: FILE OPEN FAIL" << "\n";
         }
             
-        //store each row as an index in a vector(account for headerLines)
+        //store each row as an index in a vector(account for HeaderLines)
         vector<vector<string>> data;
         string row;
         vector<string> rowDel;
@@ -58,7 +58,7 @@ public:
             coloumns = 0;
             for (int i = 0; i < row.length() ; i++)
             {
-                if (row.at(i) == delimeter || i == row.length() - 1)
+                if (row.at(i) == Delimeter || i == row.length() - 1)
                 {
                     if (i == row.length() - 1)
                     {
@@ -80,7 +80,7 @@ public:
         }
         return data;   
     }
-    void writeCSV(string writePath, vector<vector<string>> data, char delim, bool isNewFile, bool isDestructive) //figure out how to make defauilt delim csv::delimeter
+    void writeCSV(string writePath, vector<vector<string>> data, bool isNewFile, bool isDestructive = false, char delim = ',') //figure out how to make defauilt delim csv::Delimeter
     {
         if (isNewFile)
         {
@@ -89,11 +89,13 @@ public:
             
             if (pathExists(writePath)) //remember to check if pathExists function works
             {
-                int i;
+                int i = 0;
                 while (pathExists(writePath))
                 {
                     i++;
+                    writePath = writePath.substr(0, writePath.find(".csv"));
                     writePath = writePath + to_string(i);
+                    writePath = writePath + ".csv";
                 }
             }
             ofstream myFile(writePath);
@@ -102,11 +104,22 @@ public:
             {
                 for (int c = 0; c < data[r].size(); c++)
                 {
-                    row = row + data[r][c] + delim;
+                    if (c == 0)
+                    {
+                        row = data[r][c] + delim;
+                    }else if (c == 1)
+                    {
+                        row = row + data[r][c] + delim;
+                    }else
+                    {
+                        row= row + data[r][c];
+                    }
+                    
                     
                 }
                 
                 newRows.push_back(row);
+
             }
             for (int i = 0; i < newRows.size(); i++)
             {
@@ -141,9 +154,23 @@ public:
 
             for (int r = 0; r < data.size(); r++)//re-delimiting vector<vector<string>> to idevisual lines
             {
+                if (!isDestructive)
+                {
+                    r = r + HeaderLines;
+                }
+                
                 for (int c = 0; c < data[r].size(); c++)
                 {
-                    row = row + data[r][c] + delim;
+                    if (c == 0)
+                    {
+                        row = data[r][c] + delim;
+                    }else if (c == 1)
+                    {
+                        row = row + data[r][c] + delim;
+                    }else
+                    {
+                        row= row + data[r][c];
+                    }
                     
                 }
                 
