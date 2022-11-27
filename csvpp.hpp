@@ -21,10 +21,10 @@ public:
     int HeaderLines;
     int IndexCoulunm;
     
-    csv( string path, int HeaderLines = 1, int indexCoulumn = 1, char delim = ',')  {
+    csv( string path, int headerLines = 1, int indexCoulumn = 1, char delim = ',')  {
         CsvPath = path;
         Delimeter = delim;
-        HeaderLines = HeaderLines;
+        HeaderLines = headerLines;
         IndexCoulunm = indexCoulumn;
 
     }
