@@ -4,16 +4,9 @@
 |   |  WELCOME TO CSVPP!         |.
  \_ |  -----------------         |.
     |                            |.
-    |  The following is an ode   |.
-    |  to all the people who     |.
+    |  The following is for      |.
+    |  all the people who        |.
     |  think python is stupid    |.
-    |                            |.
-    |                            |.
-    |  CREATED BY:               |
-    |    SuperiorSeaPickle       |.
-    |                            |.
-    |                            |.
-    |                            |.
     |                            |.
     |   _________________________|___
     |  /                            /.
